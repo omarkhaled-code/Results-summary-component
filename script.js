@@ -1,6 +1,6 @@
 let categories = [];
 let categoriesContainer = document.querySelector(".categories");
-
+let errorContainer = document.querySelector("#error");
 // document.addEventListener("DOMContentLoaded", function () {
 //   const contentElement = document.getElementById("content");
 
@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching cards:", error);
     }
   };
-  fetchCategories();
+  fetchCategories().then(() => {
+    errorContainer.style.display = "none";
+  });
 });
 const createData = (categories) => {
   for (let i = 0; i < categories.length; i++) {
